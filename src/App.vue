@@ -1,16 +1,16 @@
 <template>
-  <div id="app" class="h-full p-0 m-0">
-    <BottomNavigation />
+  <div id="app" class="p-6">
+    <ViewComponents />
   </div>
 </template>
 
 <script>
-import BottomNavigation from '@/components/BottomNavigation.vue';
+import ViewComponents from '@/views/ViewComponents.vue';
 
 export default {
   name: 'App',
   components: {
-    BottomNavigation
+    ViewComponents
   }
 };
 </script>

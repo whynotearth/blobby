@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="flex w-full fixed bottom-0 bg-transparent z-30">
+    <nav class="flex bg-transparent z-30">
       <div class="flex flex-auto">
         <div class="w-full">
           <div class="flex relative bg-primary">
@@ -21,7 +21,10 @@
               </li>
 
               <li class="link-item text-opacity-high z-30">
-                <a tabindex="0" class="flex items-center cursor-pointer">
+                <a
+                  tabindex="0"
+                  class="flex items-center cursor-pointer outline-none"
+                >
                   <div
                     class="-mt-8 h-14 w-14 rounded-full flex items-center justify-center mx-auto bg-button 
                     shadow-2dp"
