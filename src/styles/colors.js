@@ -1,15 +1,14 @@
 const colors = {
-  primary: '#EDF1F9',
-  secondary: '#173F44',
-  background: '#FFFFFF',
-  button: '#3783F5',
-  footer: '#437784',
+  'primary-blue': '#347AF0',
+  'midnight-blue': '#0D1F3C',
+  'dark-gray': '#78839C',
+  gray: '#B5BBC9',
+  'light-gray': '#CFD2D8',
+  white: '#fff',
   inactive: '#8BABB3',
   tag: '#3783F5',
   logo: '#002b31',
-  error: '#ED4A2B',
-  'on-primary': '#0D1F3C',
-  'on-secondary': '#485068'
+  error: '#ED4A2B'
 };
 
 module.exports = colors;

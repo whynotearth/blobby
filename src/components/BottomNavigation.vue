@@ -56,11 +56,11 @@
 </template>
 
 <script>
-import IconCamera from '@/assets/camera.svg';
-import IconHome from '@/assets/home.svg';
-import IconSearch from '@/assets/search.svg';
-import IconUserCircle from '@/assets/user.svg';
-import IconShoppingCart from '@/assets/shopping-cart.svg';
+import IconCamera from '@/assets/icons/camera.svg';
+import IconHome from '@/assets/icons/home.svg';
+import IconSearch from '@/assets/icons/search.svg';
+import IconUserCircle from '@/assets/icons/user.svg';
+import IconShoppingCart from '@/assets/icons/shopping-cart.svg';
 // import DrawerUpload from '@/components/DrawerUpload';
 // import { mapGetters, mapActions } from 'vuex';
 

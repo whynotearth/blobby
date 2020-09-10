@@ -1,16 +1,13 @@
 <template>
-  <div id="app" class="p-6">
-    <ViewComponents />
+  <div id="app" class="antialiased">
+    <component :is="this.$route.meta.layout || 'div'">
+      <router-view />
+    </component>
   </div>
 </template>
 
 <script>
-import ViewComponents from '@/views/ViewComponents.vue';
-
 export default {
-  name: 'App',
-  components: {
-    ViewComponents
-  }
+  name: 'App'
 };
 </script>

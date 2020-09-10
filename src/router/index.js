@@ -1,9 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import { onBoardingRoutes } from './onboardingRoutes';
+
 Vue.use(VueRouter);
 
-const routes = [];
+const routes = [
+  ...onBoardingRoutes,
+  {
+    path: '/*',
+    redirect: '/'
+  }
+];
 
 const router = new VueRouter({
   mode: 'history',
