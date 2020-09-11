@@ -3,14 +3,14 @@
     <div class="w-full h-full flex flex-col items-center justify-around">
       <div class="w-full flex flex-col items-center">
         <IconLogo />
-        <p class="mt-8 text-gray tg-h3-mobile">Welcome To</p>
-        <p class="text-white tg-h1-mobile">Scarlett</p>
+        <p class="mt-8 text-gray tg-h3-desktop">Welcome To</p>
+        <p class="text-white tg-h2-desktop">Scarlett</p>
       </div>
       <div class="flex flex-col">
         <Button
-          :isRounded="true"
+          :to="{ name: 'Login' }"
           title="Login"
-          theme="btnsecondary"
+          buttonBg="bg-white"
           padding="px-4 py-3"
           textColor="text-primary-blue"
         />

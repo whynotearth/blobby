@@ -5,6 +5,7 @@ const colors = {
   gray: '#B5BBC9',
   'light-gray': '#CFD2D8',
   white: '#fff',
+  backgroud: '#EDF1F9',
   inactive: '#8BABB3',
   tag: '#3783F5',
   logo: '#002b31',
