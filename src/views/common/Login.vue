@@ -1,23 +1,13 @@
 <template>
-  <div class="w-screen h-screen">
-    <div class="w-full h-full flex flex-col items-center bg-backgroud">
-      <BaseHeader>
-        <template #content>
-          Welcome Back!
-        </template>
-      </BaseHeader>
-      <div class="mt-8 p-4">
-        <BgLogin />
-      </div>
+  <div class="flex flex-col">
+    <div class="flex-1 flex flex-col bg-background items-center">
+      <BgLogin />
       <div
-        class="w-full h-full bg-white rounded-t-xl flex flex-col items-center justify-evenly"
+        class="flex-1 w-full bg-white flex flex-col items-center justify-evenly rounded-t-xl"
       >
-        <MaterialInput
-          label="Mobile Number"
-          borderColor="border-primary-blue"
-        />
-        <div class="flex flex-col">
-          <Button title="Request OTP" padding="px-2 py-2" />
+        <MaterialInput label="Phone Number" />
+        <div class="sm:w-full md:w-1/2 text-center">
+          <Button title="Request OTP" padding="px-4 py-3" />
           <p class="mt-4 tg-body-mobile">
             Don't have an account?
             <span class="text-primary-blue">Sign Up</span>
@@ -29,7 +19,6 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue';
 import MaterialInput from '@/components/inputs/MaterialInput.vue';
 import BgLogin from '@/assets/icons/login.svg';
 import Button from '@/components/inputs/Button.vue';
@@ -37,7 +26,6 @@ import Button from '@/components/inputs/Button.vue';
 export default {
   name: 'Login',
   components: {
-    BaseHeader,
     Button,
     MaterialInput,
     BgLogin
