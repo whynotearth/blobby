@@ -7,7 +7,8 @@
       :class="[textColor, { filled: value && value.length > 0 }]"
       v-bind="attrs"
       :id="idName"
-      type="number"
+      inputmode="numeric"
+      type="tel"
       min="1"
       max="9"
       maxlength="1"
@@ -32,7 +33,7 @@ export default {
       default: () => {}
     },
     value: {
-      type: [String, Number],
+      type: Number,
       default: null
     },
     step: {

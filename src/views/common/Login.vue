@@ -6,7 +6,7 @@
         class="flex-1 w-full bg-white flex flex-col items-center justify-evenly rounded-t-xl"
       >
         <MaterialInput label="Phone Number" />
-        <div class="sm:w-full md:w-1/2 text-center">
+        <div class="sm:w-fullmd:w-1/2 lg:w-1/4 text-center">
           <Button
             title="Request OTP"
             padding="px-4 py-3"
