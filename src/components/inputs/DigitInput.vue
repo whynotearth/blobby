@@ -8,7 +8,7 @@
       v-bind="attrs"
       :id="idName"
       inputmode="numeric"
-      type="tel"
+      type="number"
       min="1"
       max="9"
       maxlength="1"
