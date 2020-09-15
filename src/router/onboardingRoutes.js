@@ -13,8 +13,20 @@ export const onBoardingRoutes = [
     meta: {
       layout: () => import('@/layouts/AppBarLayout.vue'),
       appBar: {
-        title: 'Welcome Back!',
-        icon: 'back'
+        title: 'Welcome Back!'
+      }
+    }
+  },
+  {
+    path: '/verify',
+    name: 'Verification',
+    component: () => import('@/views/common/Verification.vue'),
+    props: true,
+    meta: {
+      layout: () => import('@/layouts/AppBarLayout.vue'),
+      appBar: {
+        title: 'Verification Required',
+        icon: true
       }
     }
   }

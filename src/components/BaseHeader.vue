@@ -2,12 +2,18 @@
   <nav class="top-0 w-full p-4 z-100 bg-primary bg-background">
     <div class="container mx-auto flex flex-row flex-wrap">
       <div class="flex-start mr-3 flex-shrink-0" v-show="this.icon">
-        <router-link class="inline-block align-middle" :to="toLink">
-          <img :src="getIcon" />
+        <router-link
+          class="inline-block align-middle text-midnight-blue"
+          :to="toLink"
+        >
+          <IconBack />
         </router-link>
       </div>
       <transition name="fade" mode="out-in">
-        <div :key="title" class="font-bold truncate flex-grow text-center">
+        <div
+          :key="title"
+          class="font-bold text-midnight-blue truncate flex-grow text-center"
+        >
           {{ title }}
         </div>
       </transition>
@@ -33,8 +39,13 @@
 </template>
 
 <script>
+import IconBack from '@/assets/icons/back.svg';
+
 export default {
   name: 'BaseHeader',
+  components: {
+    IconBack
+  },
   props: {
     title: {
       type: String,
@@ -49,7 +60,7 @@ export default {
       default: () => {}
     },
     icon: {
-      type: String
+      type: Boolean
     },
     bgColor: {
       type: String
@@ -58,9 +69,6 @@ export default {
   computed: {
     background() {
       return this.bgColor ? `bg-${this.bgColor}` : 'bg-transparent';
-    },
-    getIcon() {
-      return '';
     }
   }
 };
