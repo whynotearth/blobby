@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full md:w-1/2 px-8 mb-4">
+  <div class="relative w-full px-8 mb-4">
     <input
       class="input appearance-none outline-none relative bg-transparent w-full 
       border-b mt-2 py-2 px-1 text-opacity-medium focus:text-opacity-high border-opacity-medium 

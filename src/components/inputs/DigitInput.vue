@@ -11,8 +11,7 @@
       type="number"
       min="1"
       max="9"
-      maxlength="1"
-      step="1"
+      oninput="this.value=this.value.replace(/[^0-9]/g,'');"
       :value="value"
       v-on="inputListeners"
     />

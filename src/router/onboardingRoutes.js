@@ -29,5 +29,17 @@ export const onBoardingRoutes = [
         icon: true
       }
     }
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('@/views/common/SignUp.vue'),
+    props: true,
+    meta: {
+      layout: () => import('@/layouts/AppBarLayout.vue'),
+      appBar: {
+        title: 'Create Account'
+      }
+    }
   }
 ];

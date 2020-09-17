@@ -14,7 +14,12 @@
           padding="px-4 py-3"
           textColor="text-primary-blue"
         />
-        <p class="mt-4 text-white">Don't have an account? Sign Up</p>
+        <p class="mt-4 text-white">
+          Don't have an account?
+          <router-link :to="{ name: 'SignUp' }">
+            Sign Up
+          </router-link>
+        </p>
       </div>
     </div>
   </div>

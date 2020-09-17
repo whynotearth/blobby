@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full">
     <BaseHeader v-if="appBar" :title="appBar.title" :icon="appBar.icon" />
     <transition name="fade">
       <router-view class="mx-auto min-h-screen" />
