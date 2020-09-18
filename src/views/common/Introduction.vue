@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="box-border h-full bg-background">
-      <p class="w-full text-right p-2 text-primary-blue">Skip</p>
+      <p class="absolute w-full text-right p-2 text-primary-blue">Skip</p>
       <swiper
         class="swiper h-full"
         ref="swiperComponent"

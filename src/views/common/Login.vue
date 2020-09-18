@@ -1,20 +1,24 @@
 <template>
-  <div class="box-border h-full flex flex-col items-center bg-background">
+  <div class="flex flex-col items-center bg-background">
     <BgLogin />
     <div
-      class="flex-1 flex flex-col justify-around p-4 w-full lg:w-1/2 bg-white rounded-xl"
+      class="flex-1 flex flex-col justify-center items-center w-full lg:w-1/2 bg-white rounded-xl"
     >
-      <MaterialInput label="Phone Number" />
-      <div class="px-16">
-        <Button
-          title="Request OTP"
-          padding="px-4 py-3"
-          v-on:clicked="requestOtp"
-        />
-        <p class="mt-4 tg-body-mobile">
-          Don't have an account?
-          <span class="text-primary-blue">Sign Up</span>
-        </p>
+      <div
+        class="w-full flex flex-col justify-center items-center md:w-1/2 lg:w-2/3 px-6"
+      >
+        <MaterialInput label="Phone Number" />
+        <div class="w-full md:w-1/2 lg:w-2/3 px-6 mt-4 text-center">
+          <Button
+            title="Request OTP"
+            padding="px-4 py-3"
+            v-on:clicked="requestOtp"
+          />
+          <p class="mt-4 tg-body-mobile">
+            Don't have an account?
+            <span class="text-primary-blue">Sign Up</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>

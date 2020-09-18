@@ -2,24 +2,26 @@
   <div class="box-border flex flex-col bg-background items-center">
     <BgOffice />
     <div
-      class="flex-grow flex justify-around flex-col p-4 w-full lg:w-1/2 bg-white rounded-xl"
+      class="flex-1 flex flex-col justify-center items-center w-full lg:w-1/2 bg-white rounded-xl"
     >
-      <div>
+      <div
+        class="w-full flex flex-col justify-center items-center md:w-1/2 lg:w-2/3 px-6"
+      >
         <MaterialInput label="First Name" />
         <MaterialInput label="Last Name" />
         <MaterialInput label="Username" />
         <MaterialInput label="Email" />
-      </div>
-      <div class="px-16 mt-10">
-        <Button
-          title="Let's get started"
-          padding="px-4 py-3"
-          :to="{ name: 'Introduction' }"
-        />
-        <p class="mt-4 tg-body-mobile">
-          Already have an account?
-          <span class="text-primary-blue">Login</span>
-        </p>
+        <div class="w-full md:w-1/2 lg:w-2/3 px-6 mt-4 text-center">
+          <Button
+            title="Let's get started"
+            padding="px-4 py-3"
+            :to="{ name: 'Introduction' }"
+          />
+          <p class="mt-4 tg-body-mobile">
+            Already have an account?
+            <span class="text-primary-blue">Login</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <slot name="introImage" />
     </div>
     <div
-      class="flex-grow flex flex-col justify-evenly p-4 w-full lg:w-1/2 bg-white rounded-xl text-center"
+      class="flex-grow flex flex-col items-center justify-evenly p-4 w-full lg:w-1/2 bg-white rounded-xl text-center"
     >
       <div class="text-center">
         <div class="text-midnight-blue tg-h3-desktop">
@@ -14,7 +14,10 @@
           <slot name="content" />
         </div>
       </div>
-      <div class="px-16" v-if="!isLastStep">
+      <div
+        class="w-full md:w-1/2 lg:w-2/3 px-6 mt-4 text-center"
+        v-if="!isLastStep"
+      >
         <Button
           title="Let's get started"
           padding="px-4 py-3"
