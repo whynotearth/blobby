@@ -2,7 +2,14 @@
   <component
     :is="type"
     class="cursor-pointer rounded-full text-sm font-semibold uppercase inline-block"
-    :class="[isRipple ? 'ripple' : '', width, buttonBg, padding, textColor]"
+    :class="[
+      isRipple ? 'ripple' : '',
+      width,
+      buttonBg,
+      padding,
+      textColor,
+      border
+    ]"
     @click="$emit('clicked')"
     :href="href"
     :to="to"
@@ -63,6 +70,10 @@ export default {
     textColor: {
       type: String,
       default: 'text-white'
+    },
+    border: {
+      type: String,
+      default: ''
     },
     isRipple: {
       type: Boolean,

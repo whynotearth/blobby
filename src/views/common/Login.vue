@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center bg-background">
+  <div class="box-border h-full flex flex-col items-center bg-background">
     <BgLogin />
     <div
       class="flex-1 flex flex-col justify-around p-4 w-full lg:w-1/2 bg-white rounded-xl"

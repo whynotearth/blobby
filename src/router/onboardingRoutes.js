@@ -41,5 +41,14 @@ export const onBoardingRoutes = [
         title: 'Create Account'
       }
     }
+  },
+  {
+    path: '/introduction',
+    name: 'Introduction',
+    component: () => import('@/views/common/Introduction.vue'),
+    props: true,
+    meta: {
+      layout: () => import('@/layouts/AppBarLayout.vue')
+    }
   }
 ];

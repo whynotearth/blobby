@@ -1,8 +1,8 @@
 <template>
-  <div class="h-full">
+  <div class="h-full w-screen">
     <BaseHeader v-if="appBar" :title="appBar.title" :icon="appBar.icon" />
     <transition name="fade">
-      <router-view class="mx-auto min-h-screen" />
+      <router-view class="mx-auto box-border h-full" />
     </transition>
   </div>
 </template>
