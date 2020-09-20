@@ -4,24 +4,22 @@
     <div
       class="flex-1 flex flex-col justify-center items-center w-full lg:w-1/2 bg-white rounded-xl"
     >
-      <div
-        class="w-full flex flex-col justify-center items-center md:w-1/2 lg:w-2/3 px-6"
-      >
+      <div class="w-full md:w-1/2 lg:w-2/3 px-6">
         <MaterialInput label="First Name" />
         <MaterialInput label="Last Name" />
         <MaterialInput label="Username" />
         <MaterialInput label="Email" />
-        <div class="w-full md:w-1/2 lg:w-2/3 px-6 mt-4 text-center">
-          <Button
-            title="Let's get started"
-            padding="px-4 py-3"
-            :to="{ name: 'Introduction' }"
-          />
-          <p class="mt-4 tg-body-mobile">
-            Already have an account?
-            <span class="text-primary-blue">Login</span>
-          </p>
-        </div>
+      </div>
+      <div class="px-6 mt-8 text-center">
+        <Button
+          title="Let's get started"
+          padding="px-4 py-3"
+          :to="{ name: 'Introduction' }"
+        />
+        <p class="mt-4 tg-body-mobile">
+          Already have an account?
+          <span class="text-primary-blue">Login</span>
+        </p>
       </div>
     </div>
   </div>
