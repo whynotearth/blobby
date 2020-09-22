@@ -2,11 +2,29 @@
   <div class="flex flex-col items-center bg-background">
     <BgLogin />
     <div
-      class="w-full flex-1 flex flex-col justify-center items-center 
-      md:w-1/2 lg:w-2/3 px-6 bg-white rounded-t-xl"
+      class="flex flex-col items-center justify-center flex-1 w-full px-6 bg-white md:w-1/2 lg:w-2/3 rounded-t-xl"
     >
       <div class="w-full md:w-1/2">
-        <MaterialInput label="Phone Number" />
+        <MaterialInput
+          type="tel"
+          label="Phone Number"
+          pattern='pattern="[0-9]*'
+          v-model="$v.phoneNumber.$model"
+          :error="
+            $v.phoneNumber.$dirty &&
+              (!$v.phoneNumber.required || !$v.phoneNumber.minLength)
+          "
+        >
+          <span
+            v-if="$v.phoneNumber.$dirty && !$v.phoneNumber.required"
+            class="text-xs text-red-600"
+          >
+            Phone number is required
+          </span>
+          <span v-if="!$v.phoneNumber.minLength" class="text-xs text-red-600">
+            Please enter a valid phone number
+          </span>
+        </MaterialInput>
       </div>
       <div class="mt-8">
         <Button
@@ -29,6 +47,7 @@ import BgLogin from '@/assets/icons/login.svg';
 import Button from '@/components/inputs/Button.vue';
 
 import router from '@/router';
+import { required, minLength } from 'vuelidate/lib/validators';
 
 export default {
   name: 'Login',
@@ -36,6 +55,17 @@ export default {
     Button,
     MaterialInput,
     BgLogin
+  },
+  data() {
+    return {
+      phoneNumber: ''
+    };
+  },
+  validations: {
+    phoneNumber: {
+      required,
+      minLength: minLength(7)
+    }
   },
   methods: {
     requestOtp() {

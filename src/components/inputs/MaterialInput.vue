@@ -1,9 +1,7 @@
 <template>
   <div class="relative w-full px-8 mb-4">
     <input
-      class="input appearance-none outline-none relative bg-transparent w-full 
-      border-b mt-2 py-2 px-1 text-opacity-medium focus:text-opacity-high border-opacity-medium 
-      focus:border-opacity-high"
+      class="relative w-full px-1 py-2 mt-2 bg-transparent border-b outline-none appearance-none input text-opacity-medium focus:text-opacity-high border-opacity-medium focus:border-opacity-high"
       :class="[textColor, borderColor, { filled: value && value.length > 0 }]"
       v-bind="attrs"
       :id="idName"
@@ -11,17 +9,18 @@
       :min="min"
       :step="step"
       :value="value"
-      v-on="inputListeners"
+      @blur="$emit('input', $event.target.value)"
       :placeholder="label"
+      :pattern="pattern"
     />
     <label
       :for="idName"
-      class="label absolute top-0 left-0 cursor-text"
+      class="absolute top-0 left-0 label cursor-text"
       :class="[labelColor]"
     >
       {{ label }}
     </label>
-    <div class="ml-4 mt-2 text-error tg-body-mobile" v-if="error">
+    <div class="mt-2 ml-4 text-error tg-body-mobile" v-if="error">
       <slot />
     </div>
   </div>
@@ -77,31 +76,13 @@ export default {
       type: String,
       default: 'text-primary-blue'
     },
+    pattern: {
+      type: String
+    },
     // update value on input event
     immediateInput: {
       type: Boolean,
       default: false
-    }
-  },
-  computed: {
-    inputListeners: function() {
-      return Object.assign({}, this.$listeners, {
-        blur: this.onBlur,
-        input: this.onInput
-      });
-    }
-  },
-  methods: {
-    onBlur($event) {
-      if (!this.value && !$event.target.value) {
-        return;
-      }
-      this.$emit('input', $event.target.value);
-    },
-    onInput($event) {
-      if (this.immediateInput) {
-        this.$emit('input', $event.target.value);
-      }
     }
   }
 };

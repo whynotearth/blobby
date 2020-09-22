@@ -1,63 +1,22 @@
 <template>
   <div>
     <div class="box-border h-full bg-background">
-      <p class="absolute w-full text-right p-2 text-primary-blue">Skip</p>
+      <p class="absolute w-full p-2 text-right text-primary-blue">Skip</p>
       <swiper
-        class="swiper h-full"
+        class="h-full swiper"
         ref="swiperComponent"
         :options="swiperOption"
       >
-        <swiper-slide>
-          <Step>
+        <swiper-slide v-for="(slide, index) in slides" :key="index">
+          <Step :isLastStep="slide.isLast" @next="nextSlide" @last="lastSlide">
             <template v-slot:introImage>
-              <BgDesktop />
+              <component :is="slide.introImage"></component>
             </template>
             <template v-slot:heading>
-              Welcome to Scarlett
+              {{ slide.heading }}
             </template>
             <template v-slot:content>
-              Manage all your savings groups! It’s simple and easy!
-            </template>
-          </Step>
-        </swiper-slide>
-        <swiper-slide>
-          <Step>
-            <template v-slot:introImage>
-              <BgIdea />
-            </template>
-            <template v-slot:heading>
-              Nice and Tidy Cash Portfolio!
-            </template>
-            <template v-slot:content>
-              Keep accurate records of your cash deposits, withdraws, and entire
-              portfolio.
-            </template>
-          </Step>
-        </swiper-slide>
-        <swiper-slide>
-          <Step>
-            <template v-slot:introImage>
-              <BgMobile />
-            </template>
-            <template v-slot:heading>
-              Keep Track of Performance!
-            </template>
-            <template v-slot:content>
-              Track overall group performance with beautiful reporting
-              dashboards.
-            </template>
-          </Step>
-        </swiper-slide>
-        <swiper-slide>
-          <Step :isLastStep="true">
-            <template v-slot:introImage>
-              <BgSocial />
-            </template>
-            <template v-slot:heading>
-              Your Safety is Our Top Priority
-            </template>
-            <template v-slot:content>
-              Our top-notch security features will keep you completely safe.
+              {{ slide.content }}
             </template>
           </Step>
         </swiper-slide>
@@ -72,30 +31,68 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import Step from '@/components/introduction/Step.vue';
 import 'swiper/swiper-bundle.css';
 
-import BgDesktop from '@/assets/icons/desktop.svg';
-import BgIdea from '@/assets/icons/idea.svg';
-import BgMobile from '@/assets/icons/mobile.svg';
-import BgSocial from '@/assets/icons/social.svg';
-
 export default {
   name: 'Introduction',
   components: {
     Swiper,
     SwiperSlide,
-    Step,
-    BgDesktop,
-    BgIdea,
-    BgMobile,
-    BgSocial
+    Step
   },
   data() {
     return {
+      currentIndex: 0,
       swiperOption: {
         pagination: {
           el: '.swiper-pagination'
         }
-      }
+      },
+      slides: [
+        {
+          introImage: require('@/assets/icons/desktop.svg'),
+          heading: 'Welcome to Scarlett',
+          content: 'Manage all your savings groups! It’s simple and easy!',
+          isLast: false
+        },
+        {
+          introImage: require('@/assets/icons/idea.svg'),
+          heading: 'Nice and Tidy Cash Portfolio!',
+          content:
+            'Keep accurate records of your cash deposits, withdraws, and entire portfolio.',
+          isLast: false
+        },
+        {
+          introImage: require('@/assets/icons/mobile.svg'),
+          heading: 'Keep Track of Performance!',
+          content:
+            'Track overall group performance with beautiful reporting dashboards.',
+          isLast: false
+        },
+        {
+          introImage: require('@/assets/icons/social.svg'),
+          heading: 'Your Safety is Our Top Priority',
+          content:
+            'Our top-notch security features will keep you completely safe.',
+          isLast: true
+        }
+      ]
     };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.swiperComponent.$swiper;
+    }
+  },
+  methods: {
+    nextSlide() {
+      if (this.currentIndex <= this.slides.length - 1) {
+        this.currentIndex += 1;
+        this.swiper.slideTo(this.currentIndex, 1000, false);
+      }
+    },
+    lastSlide() {
+      // redirect to the next view
+      console.log('last');
+    }
   }
 };
 </script>
