@@ -1,5 +1,5 @@
 <template>
-  <div class="box-border flex flex-col items-center bg-background">
+  <div class="flex flex-col items-center bg-background">
     <BgOffice />
     <div
       class="flex flex-col items-center justify-center flex-1 w-full bg-white lg:w-1/2 rounded-xl"

@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center bg-background">
     <BgLogin />
     <div
-      class="flex flex-col items-center justify-center flex-1 w-full px-6 bg-white md:w-1/2 lg:w-2/3 rounded-t-xl"
+      class="flex flex-col items-center justify-center flex-1 w-full bg-white lg:w-1/2 rounded-xl"
     >
       <div class="w-full md:w-1/2">
         <MaterialInput
