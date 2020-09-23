@@ -1,10 +1,10 @@
 <template>
-  <div class="box-border flex flex-col bg-background items-center">
+  <div class="box-border flex flex-col items-center bg-background">
     <BgOffice />
     <div
-      class="flex-1 flex flex-col justify-center items-center w-full lg:w-1/2 bg-white rounded-xl"
+      class="flex flex-col items-center justify-center flex-1 w-full bg-white lg:w-1/2 rounded-xl"
     >
-      <div class="w-full md:w-1/2 lg:w-2/3 px-6">
+      <div class="w-full px-6 md:w-1/2 lg:w-2/3">
         <MaterialInput label="First Name" />
         <MaterialInput label="Last Name" />
         <MaterialInput label="Username" />
@@ -18,7 +18,9 @@
         />
         <p class="mt-4 tg-body-mobile">
           Already have an account?
-          <span class="text-primary-blue">Login</span>
+          <router-link :to="{ name: 'Login' }" class="text-primary-blue">
+            Login
+          </router-link>
         </p>
       </div>
     </div>

@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="box-border h-full bg-background">
-      <p class="absolute w-full p-2 text-right text-primary-blue">Skip</p>
+      <p
+        class="absolute w-full p-2 text-right text-primary-blue"
+        @click="lastSlide"
+      >
+        Skip
+      </p>
       <swiper
         class="h-full swiper"
         ref="swiperComponent"

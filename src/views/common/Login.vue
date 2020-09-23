@@ -34,7 +34,9 @@
         />
         <p class="mt-4 tg-body-mobile">
           Don't have an account?
-          <span class="text-primary-blue">Sign Up</span>
+          <router-link :to="{ name: 'SignUp' }" class="text-primary-blue">
+            Sign Up
+          </router-link>
         </p>
       </div>
     </div>
