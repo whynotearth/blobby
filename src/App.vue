@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="antialiased">
+  <div id="app" class="antialiased h-full">
     <component :is="this.$route.meta.layout || 'div'">
       <router-view />
     </component>

@@ -1,33 +1,38 @@
 <template>
   <component
     :is="type"
-    class="button tg-color-label-mobile font-semibold uppercase cursor-pointer transition-all duration-75 select-none"
+    class="cursor-pointer rounded-full text-sm font-semibold uppercase inline-block"
     :class="[
-      `theme-${theme}`,
-      shadow,
-      margin,
-      display,
-      maxWidth,
-      isRounded ? 'rounded-full' : '',
+      isRipple ? 'ripple' : '',
       width,
-      background,
-      textColorComputed,
-      padding
+      buttonBg,
+      padding,
+      textColor,
+      border
     ]"
-    v-bind="attrs"
-    v-on="eventListeners"
+    @click="$emit('clicked')"
     :href="href"
     :to="to"
   >
-    <div
-      class="flex content-between w-full items-center"
-      :class="[textJustify]"
-    >
-      <slot name="start" />
-      <div class="flex items-center flex-grow-0">
+    <div class="flex flex-row items-center">
+      <div class="text-left">
+        <slot name="icon"></slot>
+      </div>
+      <div
+        class="text-left"
+        :class="[titleLeft || title ? 'flex-1' : 'hidden']"
+      >
+        {{ titleLeft }}
+      </div>
+      <div class="flex-grow text-center" v-if="title">
         {{ title }}
       </div>
-      <slot name="end" />
+      <div
+        class="text-right"
+        :class="[titleRight || title ? 'flex-1' : 'hidden']"
+      >
+        {{ titleRight }}
+      </div>
     </div>
   </component>
 </template>
@@ -36,10 +41,6 @@
 export default {
   name: 'Button',
   props: {
-    attrs: {
-      type: Object,
-      default: () => {}
-    },
     href: {
       type: String
     },
@@ -50,59 +51,40 @@ export default {
       type: String,
       default: ''
     },
+    titleLeft: {
+      type: String,
+      default: ''
+    },
+    titleRight: {
+      type: String,
+      default: ''
+    },
     width: {
       type: String,
       default: 'w-full'
     },
-    background: {
+    buttonBg: {
       type: String,
-      default: ''
-    },
-    shadow: {
-      type: String,
-      default: ''
-    },
-    textJustify: {
-      type: String,
-      default: 'justify-center'
+      default: 'bg-primary-blue'
     },
     textColor: {
       type: String,
+      default: 'text-white'
+    },
+    border: {
+      type: String,
       default: ''
     },
-    maxWidth: {
-      type: String,
-      default: 'max-w-md'
+    isRipple: {
+      type: Boolean,
+      default: true
     },
     padding: {
       type: String,
-      default: 'px-4 py-2'
-    },
-    isRounded: {
-      type: Boolean,
-      default: false
-    },
-    display: {
-      type: String,
-      default: 'block'
-    },
-    margin: {
-      type: String,
-      default: 'mx-auto'
-    },
-    theme: {
-      type: String,
-      default: 'btnprimary' // ['btnprimary', 'btnsecondary']
+      default: 'p-4'
     }
   },
   computed: {
-    eventListeners: function() {
-      return Object.assign({}, this.$listeners, {
-        click: () => {
-          this.$emit('clicked');
-        }
-      });
-    },
     type() {
       if (this.href) {
         return 'a';
@@ -111,35 +93,23 @@ export default {
       } else {
         return 'button';
       }
-    },
-    textColorComputed() {
-      if (this.textColor) {
-        return this.textColor;
-      }
-      return this.theme === 'btnprimary'
-        ? 'text-on-secondary text-opacity-high'
-        : 'text-primary text-opacity-high';
     }
   }
 };
 </script>
 
 <style scoped>
-.button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px white;
+.ripple {
+  background-position: center;
+  transition: background 0.4s;
 }
-.theme-btnprimary {
-  @apply shadow-2dp;
-  background: linear-gradient(
-      308deg,
-      rgba(237, 187, 174, 0.14) 0%,
-      rgba(255, 255, 255, 0.42) 49.37%,
-      rgba(255, 255, 255, 0.42) 98.01%
-    ),
-    #edaeae;
+.ripple:hover {
+  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%)
+    center/15000%;
 }
-.theme-btnsecondary {
-  @apply shadow-2dp bg-white;
+.ripple:active {
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
 }
 </style>
