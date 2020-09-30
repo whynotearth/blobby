@@ -1,6 +1,7 @@
 @responsive {
   /* Desktop */
   .tg-h1-desktop {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 4rem;
@@ -8,6 +9,7 @@
   }
 
   .tg-h2-desktop {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 3rem;
@@ -15,6 +17,7 @@
   }
 
   .tg-h3-desktop {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 2.25rem;
@@ -22,6 +25,7 @@
   }
 
   .tg-desktop-body {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 2rem;
@@ -29,6 +33,7 @@
   }
 
   .tg-desktop-body-bold {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 2rem;
@@ -36,6 +41,7 @@
   }
 
   .tg-desktop-caption {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5rem;
@@ -43,6 +49,7 @@
   }
 
   .tg-desktop-bolded-caption {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.5rem;
@@ -50,6 +57,7 @@
   }
 
   .tg-desktop-color-label {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.75rem;
@@ -58,6 +66,7 @@
   }
 
   .tg-desktop-story-titles {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.125rem;
@@ -65,6 +74,7 @@
   }
 
   .tg-desktop-bolded-story-titles {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.125rem;
@@ -73,6 +83,7 @@
 
   /* Mobile */
   .tg-h1-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 2rem;
@@ -80,6 +91,7 @@
   }
 
   .tg-h2-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.5rem;
@@ -87,6 +99,7 @@
   }
 
   .tg-h3-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.125rem;
@@ -94,6 +107,7 @@
   }
 
   .tg-body-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
@@ -101,6 +115,7 @@
   }
 
   .tg-body-mobile-bold {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1rem;
@@ -108,6 +123,7 @@
   }
 
   .tg-caption-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 0.75rem;
@@ -115,6 +131,7 @@
   }
 
   .tg-caption-bold-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 0.75rem;
@@ -122,6 +139,7 @@
   }
 
   .tg-mobile-story-titles {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 0.563rem;
@@ -129,6 +147,7 @@
   }
 
   .tg-mobile-bolded-story-titles {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 0.563rem;
@@ -136,6 +155,7 @@
   }
 
   .tg-color-label-mobile {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 0.875rem;
@@ -144,6 +164,7 @@
   }
 
   .hyperlink-text {
+    font-family: 'Titillium Web', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 0.75rem;

@@ -7,6 +7,7 @@ import VueMeta from 'vue-meta';
 import SmoothPicker from 'vue-smooth-picker';
 import 'vue-smooth-picker/dist/css/style.css';
 import vClickOutside from 'v-click-outside';
+
 var dataLayer = dataLayer || [];
 require('typeface-open-sans');
 
