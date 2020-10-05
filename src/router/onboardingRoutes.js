@@ -43,6 +43,15 @@ export const onBoardingRoutes = [
     }
   },
   {
+    path: '/connect/:providerName/redirect',
+    name: 'Redirect',
+    component: () => import('@/components/auth/Redirect.vue'),
+    props: true,
+    meta: {
+      layout: () => import('@/layouts/AppBarLayout.vue')
+    }
+  },
+  {
     path: '/introduction',
     name: 'Introduction',
     component: () => import('@/views/common/Introduction.vue'),
