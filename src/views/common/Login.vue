@@ -8,6 +8,7 @@
         <AuthButton />
       </div>
       {{ name }}
+      {{ email }}
       <div class="mt-8">
         <p class="tg-body-mobile">
           Don't have an account?
@@ -33,7 +34,8 @@ export default {
   },
   data() {
     return {
-      name: ''
+      name: '',
+      email: ''
     };
   },
   created() {
@@ -52,6 +54,7 @@ export default {
         var user = result.user;
         console.log(user);
         self.name = user.displayName;
+        self.email = user.email;
       })
       .catch(function(error) {
         console.log(error);
