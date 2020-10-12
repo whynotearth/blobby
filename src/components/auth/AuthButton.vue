@@ -16,9 +16,10 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex';
 import Button from '@/components/inputs/Button.vue';
 // import facebookLogo from '@/assets/facebook2.png';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 export default {
   name: 'LinkAccount',
@@ -30,25 +31,15 @@ export default {
       socialMediaProviders: [
         {
           name: 'facebook'
-        },
-
-        {
-          name: 'google'
         }
       ]
     };
   },
-  computed: {
-    ...mapGetters('auth', {
-      oauthLink: 'oauth'
-    })
-  },
+
   methods: {
-    ...mapMutations('auth', ['updateProvider']),
-    async oauth(provider) {
-      await this.updateProvider(provider);
-      const redirectUrl = await this.oauthLink;
-      window.location.assign(redirectUrl);
+    async oauth() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithRedirect(provider);
     }
   }
 };
