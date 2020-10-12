@@ -1,22 +1,16 @@
 <template>
-  <div class="flex flex-col items-center bg-background">
+  <div class="flex flex-col items-center justify-center bg-background">
     <BgLogin />
     <div
       class="flex flex-col items-center justify-center flex-1 w-full bg-white lg:w-1/2 rounded-xl"
     >
-      <div class="mt-8">
-        <AuthButton />
-      </div>
-      {{ name }}
-      {{ email }}
-      <div class="mt-8">
-        <p class="tg-body-mobile">
-          Don't have an account?
-          <router-link :to="{ name: 'SignUp' }" class="text-primary-blue">
-            Sign Up
-          </router-link>
-        </p>
-      </div>
+      <AuthButton />
+    </div>
+    <div
+      class="absolute w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-30"
+      v-if="isLoading"
+    >
+      <BaseSpinner borderColor="border-primary-blue" />
     </div>
   </div>
 </template>
@@ -24,22 +18,26 @@
 <script>
 import BgLogin from '@/assets/icons/login.svg';
 import AuthButton from '@/components/auth/AuthButton.vue';
+import BaseSpinner from '@/components/BaseSpinner.vue';
 import * as firebase from 'firebase/app';
 
 export default {
   name: 'Login',
   components: {
     AuthButton,
-    BgLogin
+    BgLogin,
+    BaseSpinner
   },
   data() {
     return {
-      name: '',
-      email: ''
+      isLoading: false
     };
   },
   created() {
     let self = this;
+    if (localStorage.getItem('isReload')) {
+      self.isLoading = true;
+    }
     firebase
       .auth()
       .getRedirectResult()
@@ -47,18 +45,20 @@ export default {
         if (result.credential) {
           // This gives you a Facebook Access Token. You can use it to access the Facebook API.
           var token = result.credential.accessToken;
-          console.log(token);
+          localStorage.setItem('accessToken', token);
+          var user = result.user;
+          localStorage.setItem('userData', user);
+          self.$router.push({ name: 'Introduction' });
           // ...
         }
         // The signed-in user info.
-        var user = result.user;
-        console.log(user);
-        self.name = user.displayName;
-        self.email = user.email;
       })
       .catch(function(error) {
         console.log(error);
       });
+  },
+  beforeDestroy() {
+    localStorage.removeItem('isReload');
   }
 };
 </script>

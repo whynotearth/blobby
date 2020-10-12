@@ -40,6 +40,7 @@ export default {
     async oauth() {
       var provider = new firebase.auth.FacebookAuthProvider();
       firebase.auth().signInWithRedirect(provider);
+      localStorage.setItem('isReload', true);
     }
   }
 };
