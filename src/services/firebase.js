@@ -10,4 +10,6 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_FIREBASE_APP_ID
 };
 
+console.log(firebaseConfig);
+
 firebase.initializeApp(firebaseConfig);
