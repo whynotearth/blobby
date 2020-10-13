@@ -17,9 +17,8 @@
 
 <script>
 import Button from '@/components/inputs/Button.vue';
+import { mapGetters, mapMutations } from 'vuex';
 // import facebookLogo from '@/assets/facebook2.png';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
 
 export default {
   name: 'LinkAccount',
@@ -35,12 +34,17 @@ export default {
       ]
     };
   },
-
+  computed: {
+    ...mapGetters('auth', {
+      oauthLink: 'oauth'
+    })
+  },
   methods: {
-    async oauth() {
-      var provider = new firebase.auth.FacebookAuthProvider();
-      firebase.auth().signInWithRedirect(provider);
-      localStorage.setItem('isReload', true);
+    ...mapMutations('auth', ['updateProvider']),
+    async oauth(provider) {
+      await this.updateProvider(provider);
+      const redirectUrl = await this.oauthLink;
+      window.location.assign(redirectUrl);
     }
   }
 };

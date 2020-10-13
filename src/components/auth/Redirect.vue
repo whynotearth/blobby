@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'Redirect',
   data() {
@@ -26,13 +27,17 @@ export default {
       .then(res => res.json())
       .then(res => {
         localStorage.setItem('jwt', res.jwt);
-        localStorage.setItem('username', res.user.username);
+        console.log(res.user);
+        this.saveUser(res.user);
         this.text = 'Logged in successfully. Redirecting in 3 seconds.';
         setTimeout(() => this.$router.push({ name: 'Introduction' }), 3000);
       })
       .catch(err => {
         console.log(err);
       });
+  },
+  methods: {
+    ...mapActions('user', ['saveUser'])
   }
 };
 </script>

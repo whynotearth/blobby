@@ -1,12 +1,11 @@
 <template>
   <div>
     <div class="box-border h-full bg-background">
-      <p
-        class="absolute w-full p-2 text-right text-primary-blue"
-        @click="lastSlide"
-      >
-        Skip
-      </p>
+      <div class="w-full text-right p-2 text-primary-blue">
+        <router-link class="hover:cursor-pointer" :to="{ name: 'Home' }">
+          Skip
+        </router-link>
+      </div>
       <swiper
         class="h-full swiper"
         ref="swiperComponent"
