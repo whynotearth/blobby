@@ -1,8 +1,13 @@
 <template>
   <div class="relative w-full px-8 mb-4">
     <input
-      class="relative w-full px-1 py-2 mt-2 bg-transparent border-b outline-none appearance-none input text-opacity-medium focus:text-opacity-high border-opacity-medium focus:border-opacity-high"
-      :class="[textColor, borderColor, { filled: value && value.length > 0 }]"
+      class="relative w-full px-1 py-2 mt-2 bg-transparent outline-none appearance-none input text-opacity-medium focus:text-opacity-high border-opacity-medium focus:border-opacity-high"
+      :class="[
+        textColor,
+        borderColor,
+        border,
+        { filled: value && value.length > 0 }
+      ]"
       v-bind="attrs"
       :id="idName"
       :type="type"
@@ -67,6 +72,10 @@ export default {
     borderColor: {
       type: String,
       default: 'border-light-gray'
+    },
+    border: {
+      type: String,
+      default: 'border-b'
     },
     textColor: {
       type: String,

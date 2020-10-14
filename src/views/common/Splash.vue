@@ -7,7 +7,7 @@
       <p class="mt-8 text-gray tg-h3-desktop">Welcome To</p>
       <p class="text-white tg-h2-desktop">Scarlett</p>
     </div>
-    <div class="flex flex-col">
+    <div class="sm:w-1/12">
       <Button
         :to="{ name: 'Login' }"
         title="Login"
@@ -16,12 +16,12 @@
         textColor="text-primary-blue"
         :isRipple="false"
       />
-      <p class="mt-4 text-white">
+      <!-- <p class="mt-4 text-white">
         Don't have an account?
         <router-link :to="{ name: 'SignUp' }">
           Sign Up
         </router-link>
-      </p>
+      </p> -->
     </div>
   </div>
 </template>
