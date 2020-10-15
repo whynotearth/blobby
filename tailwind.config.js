@@ -4,7 +4,12 @@ const colors = require('./src/styles/colors');
 const opacity = require('./src/styles/opacity');
 
 module.exports = {
-  purge: ['./public/**/*.html', './src/**/*.vue'],
+  purge: {
+    content: ['./public/**/*.html', './src/**/*.vue'],
+    options: {
+      whitelist: ['w-32', 'w-56', 'w-64', 'h-32', 'h-56', 'h-64']
+    }
+  },
   theme: {
     extend: {
       boxShadow,
