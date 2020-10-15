@@ -7,7 +7,7 @@ module.exports = {
   purge: {
     content: ['./public/**/*.html', './src/**/*.vue'],
     options: {
-      whitelist: ['w-32', 'w-64', 'w-128', 'h-32', 'h-64', 'h-128']
+      whitelist: ['w-32', 'w-56', 'w-64', 'h-32', 'h-56', 'h-64']
     }
   },
   theme: {
