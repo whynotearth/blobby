@@ -7,8 +7,15 @@
     <div
       class="max-w-full flex flex-row flex-no-wrap mt-4 space-x-6 overflow-x-auto box-content hide-scrollbar"
     >
-      <div class="flex flex-col" v-for="item in sliderContent" :key="item.id">
-        <div :class="`w-${imageSize} h-${imageSize} cursor-pointer`">
+      <div
+        class="flex flex-col"
+        v-for="(item, index) in sliderContent"
+        :key="index"
+      >
+        <div
+          :class="`w-${imageSize} h-${imageSize} cursor-pointer`"
+          @click="$emit('clicked', item.subtitle)"
+        >
           <img
             :src="item.image"
             class="w-full h-full object-cover rounded-lg"

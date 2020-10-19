@@ -10,6 +10,7 @@
           :title="item.title"
           :sliderContent="item.sliderContent"
           :imageSize="item.imageSize"
+          @clicked="showDetails"
         />
       </div>
     </template>
@@ -93,7 +94,7 @@ export default {
             {
               subtitle: 'Lilys Burger',
               image:
-                'https://res.cloudinary.com/whynotearth/image/upload/v1594953968/foodouken/tenant_upload/j25cern6hcpiuyrm5azs.png'
+                'https://images.pexels.com/photos/1199960/pexels-photo-1199960.jpeg?auto=compress&cs=tinysrgb'
             },
             {
               subtitle: 'Angkor Tacos',
@@ -114,6 +115,17 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    showDetails(value) {
+      let restaurant = this.content[2].sliderContent;
+      this.$router.push({
+        name: 'ViewRestaurant',
+        params: {
+          restaurantData: restaurant.find(val => value === val.subtitle)
+        }
+      });
+    }
   }
 };
 </script>
