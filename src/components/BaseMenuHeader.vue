@@ -1,5 +1,5 @@
 <template>
-  <nav class="top-0 w-full z-100 sticky bg-transparent mt-1 p-4">
+  <nav class="top-0 w-full z-100 bg-transparent mt-1 p-4">
     <div class="flex flex-row justify-between items-center">
       <div :class="{ 'rounded-full bg-white p-2': isRestaurantPage }">
         <a class="inline-block align-middle">

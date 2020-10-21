@@ -8,6 +8,7 @@ import VueMeta from 'vue-meta';
 import SmoothPicker from 'vue-smooth-picker';
 import 'vue-smooth-picker/dist/css/style.css';
 import vClickOutside from 'v-click-outside';
+import { createProvider } from './vue-apollo';
 
 var dataLayer = dataLayer || [];
 require('typeface-open-sans');
@@ -28,5 +29,6 @@ Vue.config.productionTip = false;
 new Vue({
   store,
   router,
+  apolloProvider: createProvider(),
   render: h => h(App)
 }).$mount('#app');

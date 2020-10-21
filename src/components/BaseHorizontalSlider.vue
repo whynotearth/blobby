@@ -1,23 +1,19 @@
 <template>
   <div class="w-full py-4 overflow-hidden">
     <div class="flex flex-row justify-between items-end">
-      <p class="font-semibold text-lg">{{ title }}</p>
+      <p class="font-semibold text-lg">{{ data[0].__typename }}</p>
       <p class="text-sm font-light">View all</p>
     </div>
     <div
       class="max-w-full flex flex-row flex-no-wrap mt-4 space-x-6 overflow-x-auto box-content hide-scrollbar"
     >
-      <div
-        class="flex flex-col"
-        v-for="(item, index) in sliderContent"
-        :key="index"
-      >
+      <div class="flex flex-col" v-for="(item, index) in data" :key="index">
         <div
           :class="`w-${imageSize} h-${imageSize} cursor-pointer`"
-          @click="$emit('clicked', item.subtitle)"
+          @click="$emit('clicked', item)"
         >
           <img
-            :src="item.image"
+            :src="item.image.url"
             class="w-full h-full object-cover rounded-lg"
           />
         </div>
@@ -36,11 +32,7 @@
 export default {
   name: 'BaseHorizontalSlider',
   props: {
-    title: {
-      type: String,
-      required: true
-    },
-    sliderContent: {
+    data: {
       type: Array,
       required: true
     },

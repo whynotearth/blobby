@@ -7,10 +7,10 @@ export const customerViewRoutes = [
     meta: { layout: () => import('@/layouts/SideMenuLayout.vue') }
   },
   {
-    path: '/restaurant',
-    name: 'ViewRestaurant',
+    path: '/details/:name',
+    name: 'ViewDetails',
     props: true,
-    component: () => import('@/views/ViewRestaurant.vue'),
+    component: () => import('@/views/ViewDetails.vue'),
     meta: {
       layout: () => import('@/layouts/SideMenuLayout.vue'),
       isRestaurantPage: true
