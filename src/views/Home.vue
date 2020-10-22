@@ -34,14 +34,14 @@ export default {
         query {
           restaurants {
             id
-            subtitle: name
+            name
             image {
               url
             }
           }
           categories {
             id
-            subtitle: name
+            name
             image {
               url
             }
@@ -55,7 +55,7 @@ export default {
     showDetails(value) {
       this.$router.push({
         name: 'ViewDetails',
-        params: { name: value.subtitle, id: value.id }
+        params: { name: value.name, id: value.id }
       });
     }
   }
