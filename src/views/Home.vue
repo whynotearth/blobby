@@ -53,10 +53,18 @@ export default {
   },
   methods: {
     showDetails(value) {
-      this.$router.push({
-        name: 'ViewDetails',
-        params: { name: value.name, id: value.id }
-      });
+      console.log(value);
+      if (value.__typename === 'Restaurant') {
+        this.$router.push({
+          name: 'ViewDetails',
+          params: { name: value.name, id: value.id }
+        });
+      } else if (value.__typename === 'Categories') {
+        this.$router.push({
+          name: 'ViewCategory',
+          params: { category: value.name, id: value.id }
+        });
+      }
     }
   }
 };

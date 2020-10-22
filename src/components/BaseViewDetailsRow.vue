@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full flex flex-row space-x-2 mt-4 px-2">
+  <div class="w-full flex flex-row space-x-2 mt-4">
     <div class="w-24 h-24 flex-shrink-0">
       <img :src="data.image[0].url" class="w-full h-full object-cover" />
     </div>
