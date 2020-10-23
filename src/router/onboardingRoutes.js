@@ -1,10 +1,10 @@
 export const onBoardingRoutes = [
-  {
-    path: '/',
-    name: 'Welcome',
-    component: () => import('@/views/common/Splash.vue'),
-    meta: { layout: () => import('@/layouts/AppBarLayout.vue') }
-  },
+  // {
+  //   path: '/',
+  //   name: 'Welcome',
+  //   component: () => import('@/views/common/Splash.vue'),
+  //   meta: { layout: () => import('@/layouts/AppBarLayout.vue') }
+  // },
   {
     path: '/login',
     name: 'Login',
