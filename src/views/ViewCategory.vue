@@ -56,14 +56,15 @@ export default {
         return {
           id: this.id
         };
-      }
+      },
+      fetchPolicy: 'cache-and-network'
     }
   },
   methods: {
     openDetails(value) {
       this.$router.push({
         name: 'ViewDetails',
-        params: { name: value.name, id: value.id }
+        params: { id: value.id }
       });
     }
   }

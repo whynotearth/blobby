@@ -9,7 +9,7 @@
     >
       <div class="flex flex-col" v-for="(item, index) in data" :key="index">
         <div
-          class="flex flex-row py-4 text-sm gap-1 break-words"
+          class="flex flex-row py-4 text-sm gap-1 break-words cursor-pointer"
           @click="selectItem(index)"
         >
           <p

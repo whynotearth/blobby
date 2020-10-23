@@ -1,13 +1,13 @@
 export const customerViewRoutes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     props: true,
     component: () => import('@/views/Home.vue'),
     meta: { layout: () => import('@/layouts/SideMenuLayout.vue') }
   },
   {
-    path: '/details/:name',
+    path: '/details/:id',
     name: 'ViewDetails',
     props: true,
     component: () => import('@/views/ViewDetails.vue'),
@@ -17,7 +17,7 @@ export const customerViewRoutes = [
     }
   },
   {
-    path: '/details/:category',
+    path: '/category/:id',
     name: 'ViewCategory',
     props: true,
     component: () => import('@/views/ViewCategory.vue'),
