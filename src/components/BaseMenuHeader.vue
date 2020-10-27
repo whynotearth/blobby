@@ -8,21 +8,17 @@
         </a>
       </div>
       <div class="flex-end flex justify-center items-center space-x-1">
-        <div
-          class="cursor-pointer"
-          @click="emitAction()"
-          v-if="isRestaurantPage"
-        >
+        <div class="cursor-pointer" v-if="isRestaurantPage">
           <a class="inline-block align-middle bg-white rounded-full p-2">
             <IconHeart />
           </a>
         </div>
         <div
           class="cursor-pointer"
-          @click="emitAction()"
+          @click="$router.push({ name: 'MyCart' })"
           :class="{ 'rounded-full bg-white': isRestaurantPage }"
         >
-          <a class="inline-block align-middle p-2">
+          <a class="inline-block align-middle p-2" v-if="!isCartPage">
             <IconShoppingBag />
           </a>
         </div>
@@ -49,6 +45,9 @@ export default {
   computed: {
     isRestaurantPage() {
       return this.$route.meta.isRestaurantPage;
+    },
+    isCartPage() {
+      return this.$route.meta.isCartPage;
     }
   }
 };

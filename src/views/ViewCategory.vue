@@ -18,6 +18,7 @@
 <script>
 import BaseMainView from '@/components/BaseMainView.vue';
 import SingleCard from '@/components/SingleCard.vue';
+import { mapActions } from 'vuex';
 import gql from 'graphql-tag';
 
 export default {
@@ -60,7 +61,15 @@ export default {
       fetchPolicy: 'cache-and-network'
     }
   },
+  watch: {
+    '$apollo.loading': {
+      handler() {
+        this.setOverlayVisible(Boolean(this.$apollo.loading));
+      }
+    }
+  },
   methods: {
+    ...mapActions('common', ['setOverlayVisible']),
     openDetails(value) {
       this.$router.push({
         name: 'ViewDetails',

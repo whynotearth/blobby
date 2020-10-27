@@ -25,5 +25,15 @@ export const customerViewRoutes = [
       layout: () => import('@/layouts/SideMenuLayout.vue'),
       isRestaurantPage: true
     }
+  },
+  {
+    path: '/mycart',
+    name: 'MyCart',
+    props: true,
+    component: () => import('@/views/Cart.vue'),
+    meta: {
+      layout: () => import('@/layouts/SideMenuLayout.vue'),
+      isCartPage: true
+    }
   }
 ];

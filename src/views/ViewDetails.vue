@@ -27,6 +27,7 @@
 import gql from 'graphql-tag';
 import BaseHorizontalTextSlider from '@/components/BaseHorizontalTextSlider.vue';
 import BaseViewDetailsRow from '@/components/BaseViewDetailsRow.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'ViewDetails',
@@ -79,6 +80,15 @@ export default {
       return this.details.menu_sections[this.currenMenuSectionIndex].menu_items;
     }
   },
-  methods: {}
+  watch: {
+    '$apollo.loading': {
+      handler() {
+        this.setOverlayVisible(Boolean(this.$apollo.loading));
+      }
+    }
+  },
+  methods: {
+    ...mapActions('common', ['setOverlayVisible'])
+  }
 };
 </script>
