@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import auth from './modules/auth';
 import common from './modules/common';
 import user from './modules/user';
+import cart from './modules/cart';
 import VuexPersistence from 'vuex-persist';
 
 const vuexSession = new VuexPersistence({
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   modules: {
     auth,
     common,
-    user
+    user,
+    cart
   }
 });

@@ -1,28 +1,46 @@
 <template>
   <div class="w-full h-full relative" v-if="!$apollo.loading">
-    <div class="px-8">
+    <div class="px-6">
       <h2 class="text-3xl font-bold">
         My Cart
       </h2>
-      <p class="text-sm mt-2">{{ getCartItemCount }} items added</p>
+      <p class="text-sm mt-2">{{ getTotalItemsCount }} items added</p>
     </div>
-    <div class="px-8">
-      <div v-for="item in getCartItems" :key="item.id">
+    <div class="px-6" v-if="getOrderLines.length > 0">
+      <div v-for="item in getOrderLines" :key="item.id" class="p-0">
         <BaseViewDetailsRow :data="item" />
       </div>
     </div>
-    <div class="fixed bottom-0 w-full p-0">
-      <button class="w-full bg-primary-blue text-white p-4 uppercase">
-        Order
-      </button>
+    <div class="relative mx-auto text-center" v-else>
+      <p class="font-semibold text-lg">Your cart is empty</p>
+    </div>
+    <div
+      class="fixed bottom-0 w-full items-center uppercase p-4 space-y-3 bg-white shadow-4dp"
+      v-if="getOrderLines.length > 0"
+    >
+      <div class="flex flex-row justify-between items-center text-sm">
+        <p>
+          Total
+        </p>
+        <p>$ {{ calculateTotalPrice }}</p>
+      </div>
+      <div class="bg-green-600 p-2">
+        <button
+          class="w-full text-white font-semibold focus:outline-none"
+          @click="createOrder"
+        >
+          Order Now
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 import BaseViewDetailsRow from '@/components/BaseViewDetailsRow.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import CREATE_ORDER from '@/queries/cart/CreateOrder.gql';
 
 export default {
   name: 'Cart',
@@ -40,8 +58,13 @@ export default {
     };
   },
   computed: {
-    getCartItemCount() {
-      return this.cartData.cart.cart_product[0].menu_items.length;
+    ...mapGetters('cart', ['getOrderLines', 'getTotalItemsCount']),
+    calculateTotalPrice() {
+      return this.getOrderLines
+        .map(val => val.price)
+        .reduce((acc, currValue) => {
+          return acc + currValue;
+        });
     },
     getCartItems() {
       return this.cartData.cart.cart_product[0].menu_items;
@@ -55,36 +78,33 @@ export default {
     }
   },
   methods: {
-    ...mapActions('common', ['setOverlayVisible'])
-  },
-  apollo: {
-    cartData: {
-      query: gql`
-        query GetCartDetails($id: ID!) {
-          cartData: user(id: $id) {
-            username
-            cart {
-              id
-              cart_product {
-                id
-                menu_items {
-                  id
-                  name
-                  price
-                  image {
-                    url
-                  }
-                }
-              }
+    ...mapActions('common', ['setOverlayVisible']),
+    createOrder() {
+      this.$apollo.mutate({
+        mutation: CREATE_ORDER,
+        variables: {
+          input: {
+            data: {
+              address: '204 test view',
+              postal_code: '100006',
+              city: 'New York',
+              amount: 10.0,
+              name: 'kaze',
+              email: 'test@gmail.com',
+              phone_number: '123456789',
+              order_lines: [
+                ...this.getOrderLines.map(el => {
+                  return {
+                    name: el.name,
+                    price: el.price,
+                    quantity: el.quantity
+                  };
+                })
+              ]
             }
           }
         }
-      `,
-      variables() {
-        return {
-          id: 1
-        };
-      }
+      });
     }
   }
 };
