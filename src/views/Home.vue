@@ -16,6 +16,7 @@
 import BaseHorizontalSlider from '@/components/BaseHorizontalSlider.vue';
 import BaseMainView from '@/components/BaseMainView.vue';
 import gql from 'graphql-tag';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Home',
@@ -48,12 +49,15 @@ export default {
           }
         }
       `,
-      update: data => data
+      update: data => data,
+      watchLoading(isLoading) {
+        this.setOverlayVisible(Boolean(isLoading));
+      }
     }
   },
   methods: {
+    ...mapActions('common', ['setOverlayVisible']),
     showDetails(value) {
-      console.log(value);
       if (value.__typename === 'Restaurant') {
         this.$router.push({
           name: 'ViewDetails',

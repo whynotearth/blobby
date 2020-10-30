@@ -1,8 +1,5 @@
 const state = {
-  username: '',
-  id: 0,
-  email: '',
-  confirmed: true
+  user: {}
 };
 
 const actions = {
@@ -13,10 +10,7 @@ const actions = {
 
 const mutations = {
   updateUserState(state, payload) {
-    state.username = payload.username;
-    state.id = payload.id;
-    state.email = payload.email;
-    state.confirmed = payload.confirmed;
+    state.user = payload;
   }
 };
 

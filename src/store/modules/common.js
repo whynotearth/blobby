@@ -10,7 +10,7 @@ const mutations = {
   }
 };
 const actions = {
-  isOverlayVisible({ commit }, payload) {
+  setOverlayVisible({ commit }, payload) {
     commit('isOverlayVisible', payload);
   }
 };

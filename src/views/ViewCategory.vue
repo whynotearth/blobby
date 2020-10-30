@@ -18,6 +18,7 @@
 <script>
 import BaseMainView from '@/components/BaseMainView.vue';
 import SingleCard from '@/components/SingleCard.vue';
+import { mapActions } from 'vuex';
 import gql from 'graphql-tag';
 
 export default {
@@ -57,10 +58,14 @@ export default {
           id: this.id
         };
       },
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'cache-and-network',
+      watchLoading(isLoading) {
+        this.setOverlayVisible(Boolean(isLoading));
+      }
     }
   },
   methods: {
+    ...mapActions('common', ['setOverlayVisible']),
     openDetails(value) {
       this.$router.push({
         name: 'ViewDetails',
