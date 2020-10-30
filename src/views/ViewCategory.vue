@@ -58,13 +58,9 @@ export default {
           id: this.id
         };
       },
-      fetchPolicy: 'cache-and-network'
-    }
-  },
-  watch: {
-    '$apollo.loading': {
-      handler() {
-        this.setOverlayVisible(Boolean(this.$apollo.loading));
+      fetchPolicy: 'cache-and-network',
+      watchLoading(isLoading) {
+        this.setOverlayVisible(Boolean(isLoading));
       }
     }
   },

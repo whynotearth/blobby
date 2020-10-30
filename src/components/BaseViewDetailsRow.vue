@@ -13,14 +13,15 @@
       <div class="mt-4 inline-flex space-x-4" v-if="!isCartPage">
         <button
           class="font-bold w-6 h-6 flex items-center justify-center border border-red-600 rounded-full focus:outline-none"
+          @click="removeFromCart(data)"
         >
           -
         </button>
-        <div
+        <!-- <div
           class="font-bold flex items-center justify-center focus:outline-none"
         >
-          {{ quantity }}
-        </div>
+          {{ data.quantity }}
+        </div> -->
         <button
           class="font-bold w-6 h-6 flex items-center justify-center border border-green-600 rounded-full focus:outline-none"
           @click="addToCart(data)"
@@ -47,8 +48,7 @@ export default {
   },
   data() {
     return {
-      currentIndex: 0,
-      quantity: 0
+      currentIndex: 0
     };
   },
   methods: {
@@ -57,9 +57,10 @@ export default {
       this.$emit('itemClicked', index);
     },
     addToCart(value) {
-      this.quantity = this.quantity + 1;
-      value.quantity = this.quantity;
       this.$emit('add-to-cart', value);
+    },
+    removeFromCart(value) {
+      this.$emit('remove-from-cart', value);
     }
   }
 };

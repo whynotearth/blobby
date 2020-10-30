@@ -33,6 +33,15 @@
         </button>
       </div>
     </div>
+    <transition name="fade">
+      <div
+        v-if="overlayModel.title"
+        class="w-full h-full fixed block top-0
+        left-0 z-110"
+      >
+        <BaseSuccessOverlay :title="overlayModel.title" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -41,6 +50,8 @@
 import BaseViewDetailsRow from '@/components/BaseViewDetailsRow.vue';
 import { mapActions, mapGetters } from 'vuex';
 import CREATE_ORDER from '@/queries/cart/CreateOrder.gql';
+import BaseSuccessOverlay from '@/components/BaseSuccessOverlay.vue';
+import { showOverlayAndRedirect } from '@/helpers';
 
 export default {
   name: 'Cart',
@@ -50,7 +61,8 @@ export default {
     };
   },
   components: {
-    BaseViewDetailsRow
+    BaseViewDetailsRow,
+    BaseSuccessOverlay
   },
   data() {
     return {
@@ -59,6 +71,9 @@ export default {
   },
   computed: {
     ...mapGetters('cart', ['getOrderLines', 'getTotalItemsCount']),
+    ...mapGetters('overlay', {
+      overlayModel: 'model'
+    }),
     calculateTotalPrice() {
       return this.getOrderLines
         .map(val => val.price)
@@ -79,33 +94,48 @@ export default {
   },
   methods: {
     ...mapActions('common', ['setOverlayVisible']),
+    ...mapActions('cart', ['emptyCart']),
     createOrder() {
-      this.$apollo.mutate({
-        mutation: CREATE_ORDER,
-        variables: {
-          input: {
-            data: {
-              address: '204 test view',
-              postal_code: '100006',
-              city: 'New York',
-              amount: 10.0,
-              name: 'kaze',
-              email: 'test@gmail.com',
-              phone_number: '123456789',
-              order_lines: [
-                ...this.getOrderLines.map(el => {
-                  return {
-                    name: el.name,
-                    price: el.price,
-                    quantity: el.quantity
-                  };
-                })
-              ]
+      try {
+        showOverlayAndRedirect({
+          title: 'Order Successfully',
+          route: {
+            name: 'Home'
+          }
+        });
+        this.$apollo.mutate({
+          mutation: CREATE_ORDER,
+          variables: {
+            input: {
+              data: {
+                address: '204 test view',
+                postal_code: '100006',
+                city: 'New York',
+                amount: this.calculateTotalPrice,
+                name: 'kaze',
+                email: 'test@gmail.com',
+                phone_number: '123456789',
+                order_lines: [
+                  ...this.getOrderLines.map(el => {
+                    return {
+                      name: el.name,
+                      price: el.price
+                      // quantity: el.quantity
+                    };
+                  })
+                ]
+              }
             }
           }
-        }
-      });
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
+  },
+  beforeDestroy() {
+    console.log('destory called');
+    this.emptyCart();
   }
 };
 </script>

@@ -21,7 +21,11 @@
             :key="data.id"
             class="mb-6"
           >
-            <BaseViewDetailsRow :data="data" @add-to-cart="addToCart" />
+            <BaseViewDetailsRow
+              :data="data"
+              @add-to-cart="addToCart"
+              @remove-from-cart="removeFromCart"
+            />
           </div>
         </div>
       </div>
@@ -91,6 +95,9 @@ export default {
         return {
           id: this.$route.params.id
         };
+      },
+      watchLoading(isLoading) {
+        this.setOverlayVisible(Boolean(isLoading));
       }
     }
   },
@@ -100,18 +107,14 @@ export default {
       return this.details.menu_sections[this.currenMenuSectionIndex].menu_items;
     }
   },
-  watch: {
-    '$apollo.loading': {
-      handler() {
-        this.setOverlayVisible(Boolean(this.$apollo.loading));
-      }
-    }
-  },
   methods: {
     ...mapActions('common', ['setOverlayVisible']),
-    ...mapActions('cart', ['addItem']),
+    ...mapActions('cart', ['addItem', 'deleteItem']),
     addToCart(value) {
       this.addItem(value);
+    },
+    removeFromCart(value) {
+      this.deleteItem(value);
     }
   }
 };

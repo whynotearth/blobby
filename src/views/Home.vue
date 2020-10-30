@@ -49,13 +49,9 @@ export default {
           }
         }
       `,
-      update: data => data
-    }
-  },
-  watch: {
-    '$apollo.loading': {
-      handler() {
-        this.setOverlayVisible(Boolean(this.$apollo.loading));
+      update: data => data,
+      watchLoading(isLoading) {
+        this.setOverlayVisible(Boolean(isLoading));
       }
     }
   },

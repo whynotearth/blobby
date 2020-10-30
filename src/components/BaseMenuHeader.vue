@@ -13,7 +13,7 @@
             <IconHeart />
           </a>
         </div>
-        <!-- <div
+        <div
           class="cursor-pointer"
           @click="$router.push({ name: 'MyCart' })"
           :class="{ 'rounded-full bg-white': isRestaurantPage }"
@@ -21,7 +21,7 @@
           <a class="inline-block align-middle p-2" v-if="!isCartPage">
             <IconShoppingBag />
           </a>
-        </div> -->
+        </div>
         <slot name="menu"></slot>
       </div>
     </div>
