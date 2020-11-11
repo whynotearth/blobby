@@ -1,0 +1,11 @@
+mutation saveUserCoordinates($input: createAddressInput!) {
+  createAddress(input: $input) {
+    address {
+      id
+      user_location {
+        longitude
+        latitude
+      }
+    }
+  }
+}

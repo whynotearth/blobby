@@ -1,0 +1,13 @@
+query getUserAddress($id: ID!) {
+  user(id: $id) {
+    addresses {
+      id
+      place_name
+      address_notes
+      user_location {
+        longitude
+        latitude
+      }
+    }
+  }
+}

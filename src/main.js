@@ -6,6 +6,7 @@ import './styles/tailwind.css';
 import Vuelidate from 'vuelidate';
 import VueMeta from 'vue-meta';
 import SmoothPicker from 'vue-smooth-picker';
+import * as GmapVue from 'gmap-vue';
 import 'vue-smooth-picker/dist/css/style.css';
 import vClickOutside from 'v-click-outside';
 import { createProvider } from './vue-apollo';
@@ -22,6 +23,14 @@ Vue.use(VueMeta, {
   attribute: 'data-vue-meta',
   tagIDKeyName: 'vmid',
   refreshOnceOnNavigation: true
+});
+
+Vue.use(GmapVue, {
+  load: {
+    key: process.env.VUE_APP_MAPS_API_KEY,
+    libraries: 'places'
+  },
+  installComponents: true
 });
 
 Vue.config.productionTip = false;
