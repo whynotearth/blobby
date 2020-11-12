@@ -27,8 +27,8 @@ export const customerViewRoutes = [
     }
   },
   {
-    path: '/add-address',
-    name: 'AddAddress',
+    path: '/manage-address',
+    name: 'ManageAddress',
     props: true,
     component: () => import('@/views/UserAddress.vue'),
     meta: {

@@ -20,7 +20,7 @@
     </transition>
     <div class="w-full h-full px-4 space-y-3">
       <p class="text-2xl font-semibold">My addresses</p>
-      <div class="" v-if="!$apollo.loading">
+      <div class="" v-if="!$apollo.loading && userAddresses.user">
         <div
           v-for="address in userAddresses.user.addresses"
           :key="address.id"
@@ -29,6 +29,11 @@
           <input type="radio" class="w-5 h-5" :value="address.place_name" />
           <label class="text-lg">{{ address.place_name }}</label>
         </div>
+      </div>
+      <div v-else>
+        <h3>
+          No address found.
+        </h3>
       </div>
     </div>
     <div
