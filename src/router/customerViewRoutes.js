@@ -25,5 +25,15 @@ export const customerViewRoutes = [
       layout: () => import('@/layouts/SideMenuLayout.vue'),
       isRestaurantPage: true
     }
+  },
+  {
+    path: '/manage-address',
+    name: 'ManageAddress',
+    props: true,
+    component: () => import('@/views/UserAddress.vue'),
+    meta: {
+      layout: () => import('@/layouts/SideMenuLayout.vue'),
+      isRestaurantPage: false
+    }
   }
 ];

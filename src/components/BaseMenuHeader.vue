@@ -2,9 +2,9 @@
   <nav class="top-0 w-full z-100 bg-transparent mt-1 p-4">
     <div class="flex flex-row justify-between items-center">
       <div :class="{ 'rounded-full bg-white p-2': isRestaurantPage }">
-        <a class="inline-block align-middle">
+        <a class="inline-block align-middle cursor-pointer">
           <IconBackNew v-if="isRestaurantPage" />
-          <IconHamburger v-else />
+          <IconHamburger v-else @click="$emit('open-side-menu')" />
         </a>
       </div>
       <div class="flex-end flex justify-center items-center space-x-1">

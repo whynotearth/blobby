@@ -5,6 +5,18 @@ const state = {
   confirmed: true
 };
 
+const getters = {
+  getUsername(state) {
+    return state.username;
+  },
+  getId(state) {
+    return state.id;
+  },
+  getEmail(state) {
+    state.email;
+  }
+};
+
 const actions = {
   saveUser({ commit }, payload) {
     commit('updateUserState', payload);
@@ -23,6 +35,7 @@ const mutations = {
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 };

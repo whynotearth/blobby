@@ -27,7 +27,7 @@ export default {
       .then(res => res.json())
       .then(res => {
         localStorage.setItem('jwt', res.jwt);
-        console.log(res.user);
+        localStorage.setItem('userId', res.user.id);
         this.saveUser(res.user);
         this.text = 'Logged in successfully. Redirecting in 3 seconds.';
         setTimeout(() => this.$router.push({ name: 'Introduction' }), 3000);
